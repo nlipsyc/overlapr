@@ -17,63 +17,7 @@
   <body>
 
 <script type="text/javascript">
-function login(network){
-  console.log("network", network);
-  hello( network ).login().then( function(r){
-    // Get Profile
-    hello(network).api('me').then(function(p){
-      console.log(p);
-      document.getElementById('login').innerHTML = "Connected to "+ network+" as " + p.name;
 
-      // function getBlogs(p){
-      //   var blogButtons = [];
-      //   for (var i=0, i<p.blogs.length, i++){
-      //     <button id=
-      //   }
-      // }
-
-      // document.getElementById('result').innerHTML = "Click the blogs to compare" + 
-    });
-  }, function(e){
-    console.error(e);
-  });
-}
-
-hello.init();
-// hello.init({
-//   'tumblr' : 'AFECOJxLzjSrk3lpguwqotAOgtSvBPHyWbdzRhb3ExdNiXE08u'
-// },
-// {
-//   redirect_uri:'../redirect.html',
-//   //oauth_proxy: OAUTH_PROXY_URL
-// });
-
-
-//////////////////////
- 
-function doTheThing(network){
-    hello( network ).login({force:false}).then( function(r){
-
-      hello('tumblr').api('followers').then(function(r){
-        console.log("r", r);
-          
-        var a = r.data.map(function(item){
-          return "<li>"+item.name+"</li>";
-        });
-        document.getElementById('result').innerHTML = "<ul>" + a.join('') + "</ul>";
-        console.log("This list of followers"+a);
-      });
-  });
-  }
-
-function getPosts(blog){
-  hello('tumblr').api('blog/'+blog+'/posts/text?notes_info=true').then(function(r){
-    var a = r.data.map(function(item){
-      return "<h2>"+item.title+"</h2>"+item.body_abstract;
-    });
-    document.getElementById('blogs').innerHTML = a.join('');
-  });
-}
 </script>
 
 
@@ -85,6 +29,8 @@ function getPosts(blog){
         <button id="doTheThing" onclick="doTheThing('tumblr');">Do The Thing</button>
 
         <div id="blogs"></div>
+
+        <div id="blogButtons"></div>
 
         <div id="result"></div>
           <!--<script type="text/babel" src="scripts/overlapr.js"></script>/-->
