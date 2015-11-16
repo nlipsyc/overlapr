@@ -11,14 +11,14 @@ function login(network){
 
       //Get all the possible blogs to compare
       var blogButtons = p.blogs.map(function(item){
-          return "<button id='" + item.uuid + "' onClick=\"selectBlog('" + item.uuid + "')\">" + item.title + "</button>";
-        });
+        return "<button id='" + item.uuid + "' onClick=\"selectBlog('" + item.uuid + "')\">" + item.title + "</button>";
+      });
 
       document.getElementById('blogButtons').innerHTML = "Click the blogs to compare" + blogButtons.join('');
-      });
-    }, function(e){
+    });
+  }, function(e){
     console.error(e);
-   });
+  });
 }
 
 function selectBlog(blogID){
@@ -31,21 +31,30 @@ function selectBlog(blogID){
 }
 
 //////////////////////
- 
+
 function doTheThing(network){
+  var followersBlog1 = [],
+  followersBlog2 = [];
+  
+  getFollowers(selectedBlogs[0], 1);
+  getFollowers(selectedBlogs[1], 2);
+
+  function getFollowers(blogName, index){
     hello( network ).login({force:false}).then( function(r){
 
-      hello('tumblr').api('followers').then(function(r){
+      hello(network).api('blog/' + blogName + "/followers").then(function(r){
         console.log("r", r);
-          
-        var a = r.data.map(function(item){
+
+        followersBlog[index] = r.data.users.map(function(item){
           return "<li>"+item.name+"</li>";
         });
-        document.getElementById('result').innerHTML = "<ul>" + a.join('') + "</ul>";
-        console.log("This list of followers"+a);
       });
-  });
+    });
   }
+  document.getElementById('result').innerHTML = "<h2>followersBlog1</h2><ul>" + followersBlog1.join('') + "</ul>" + "<h2>followersBlog2</h2><ul>" + followersBlog2.join('') + "</ul>";
+  console.log("These are the list of followers"+followersBlog1, followersBlog2);
+}
+
 
 function getPosts(blog){
   hello('tumblr').api('blog/'+blog+'/posts/text?notes_info=true').then(function(r){

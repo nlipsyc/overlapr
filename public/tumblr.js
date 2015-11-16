@@ -23,9 +23,9 @@ tumblr: {
       get: {
         me: 'user/info',
         'me/like': 'user/likes',
-        'followers': 'blog/nmlapp.tumblr.com/followers',
+       'followers': 'followers', //Deprecated
         'default': function(p, callback) {
-          if (p.path.match(/(^|\/)blog\//)) {
+          if (p.path.match(/(^|\/)posts\//)) {
             delete p.query.access_token;
             p.query.api_key = hello.services.tumblr.id;
           }
@@ -39,7 +39,7 @@ tumblr: {
           p.path = 'user/like';
           query(p, callback);
         },
-        'followers': function(p, callback) {
+        'default':function(p, callback) {
           p.path = 'followers';
           query(p, callback);
         }
@@ -70,8 +70,8 @@ tumblr: {
 
           return o;
         },
-
-        'followers': function(o) {
+        //Deprecated (maybe not?)
+        'default': function(o) {
           if(o.response){
             var r = o.response;
               if (r.users){
