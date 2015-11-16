@@ -33,36 +33,40 @@ function selectBlog(blogID){
 //////////////////////
 
 function doTheThing(network){
-  var followersBlog1 = [],
-  followersBlog2 = [];
+  var followersBlog = {1: [], 2: []};
   
   getFollowers(selectedBlogs[0], 1);
   getFollowers(selectedBlogs[1], 2);
+      //  + "<h2>followersBlog2</h2><ul>" + followersBlog2.join('') + "</ul>";
+      // console.log("These are the list of followers"+followersBlog1, followersBlog2);
 
-  function getFollowers(blogName, index){
-    hello( network ).login({force:false}).then( function(r){
 
-      hello(network).api('blog/' + blogName + "/followers").then(function(r){
-        console.log("r", r);
+      function getFollowers(blogName, index){
+        hello( network ).login({force:false}).then( function(r){
 
-        followersBlog[index] = r.data.users.map(function(item){
-          return "<li>"+item.name+"</li>";
+          hello(network).api('blog/' + blogName + "/followers").then(function(r){
+            console.log("r.data", r.data, 'index', index);
+
+            followersBlog[index] = (r.data.map(function(item){
+              console.log("These are the list of followers"+followersBlog);
+
+              return "<li>"+item.name+"</li>";
+            }));
+            document.getElementById('result' + index).innerHTML = "<h2>followersBlog" + index +"</h2><ul>" + followersBlog[index].join('') + "</ul>";
+            console.log("These are the list of followers"+followersBlog1, followersBlog2);
+          });
         });
+      }
+    }
+
+
+    function getPosts(blog){
+      hello('tumblr').api('blog/'+blog+'/posts/text?notes_info=true').then(function(r){
+        var a = r.data.map(function(item){
+          return "<h2>"+item.title+"</h2>"+item.body_abstract;
+        });
+        document.getElementById('blogs').innerHTML = a.join('');
       });
-    });
-  }
-  document.getElementById('result').innerHTML = "<h2>followersBlog1</h2><ul>" + followersBlog1.join('') + "</ul>" + "<h2>followersBlog2</h2><ul>" + followersBlog2.join('') + "</ul>";
-  console.log("These are the list of followers"+followersBlog1, followersBlog2);
-}
+    }
 
-
-function getPosts(blog){
-  hello('tumblr').api('blog/'+blog+'/posts/text?notes_info=true').then(function(r){
-    var a = r.data.map(function(item){
-      return "<h2>"+item.title+"</h2>"+item.body_abstract;
-    });
-    document.getElementById('blogs').innerHTML = a.join('');
-  });
-}
-
-hello.init();
+    hello.init();
