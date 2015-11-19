@@ -1,4 +1,16 @@
+
+
+
+////////////////////////////
+//
+// Vanilla javascript to hit Tumblr API
+// @todo Integrate this properly a la React
+//
+////////////////////////////
+
+
 //The project specific code to grab Tumblr data
+
 var selectedBlogs = [];
 
 function login(network){
@@ -32,7 +44,42 @@ function selectBlog(blogID){
 
 //////////////////////
 
-function doTheThing(network){
+
+function getDemoFollowers(){
+  var followersBlog, resultA, resultB, resultOverlap;
+  followersBlog = genDemoFollowers(); //genDemoFollowers = {a:[followers], b:[followers]};
+  followersOverlap = followersBlog.a.filter(function(val) {
+    return followersBlog.b.indexOf(val) != -1;  
+  });
+
+  resultA = followersBlog.a.map(function(item){
+    return "<li>"+item.name+"</li>";
+  });
+
+  resultB = followersBlog.a.map(function(item){
+    return "<li>"+item.name+"</li>";  
+  });
+
+  resultOverlap = followersOverlap.map(function(item){
+    return "<li>"+item.name+"</li>";  
+  });
+
+
+  console.log('overlap', resultOverlap);
+
+  console.log('fblog', followersBlog);
+
+  document.getElementById('resultA').innerHTML = "<h2>Blog A</h2><ol>" + resultA.join('') + "</ol>";
+
+  document.getElementById('resultB').innerHTML = "<h2>Blog B</h2><ol>" + resultB.join('') + "</ol>";
+
+  document.getElementById('resultOverlap').innerHTML = "<h2>Follower overlap</h2><ol>" + resultOverlap.join('') + "</ol>";
+
+}
+
+  function doTheThing(network){
+  //@todo This still needs to iterate over all the followers
+  //      (max number to query at a time is 20)
   var followersBlog = {1: [], 2: []};
   
   getFollowers(selectedBlogs[0], 1);

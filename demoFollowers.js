@@ -16,8 +16,7 @@ function genDemoFollowers (){
 		demoFollowersBlog.a.push({following: true, name: "followerBlogA" + randID, updated: 1447376836, url: "http://followerBlogA" + randID + ".tumblr.com/"});
 		demoFollowersBlog.b.push({following: true, name: "followerBlogB" + randID, updated: 1447376836, url: "http://followerBlogB" + randID + ".tumblr.com/"});
 	}
-
-	console.log(demoFollowersBlog);
+	return demoFollowersBlog;
 }
 
 
