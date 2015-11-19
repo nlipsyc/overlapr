@@ -1,44 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>React Tutorial</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="css/base.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script> -->
+    <script src="node_modules/q/q.js"></script>
     <script src="hello.js"></script>
     <script src="tumblr.js"></script>
     <script src="overlapr.js"></script>
     <script src="demoFollowers.js"></script>
-  </head>
-  <body>
+</head>
+<body>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-</script>
+    </script>
 
 
     <div id="content">
-        <button id="demoLogin" onclick="getDemoFollowers()">Demo Login</button>
-        <!-- <button id="login" onclick="login('tumblr');">Tumblr</button> -->
+        <p>Hi Izzy,</p>
+        <p>So here's what I'd like you to do with a brief explanation of what each step does so that you don't need to worry.  Please open this page in Chrome and then...</p>
+        <ol>
+            <li>Click "Tumblr" and then "Allow"--This will send a request via a proxy at herokuapp.com to Tumblr (it's the standard way these things work to ensure that no one fucks around with the authentication).  This gives <em>your</em> computer a token that lets it grab info from Tumblr.  It never gets sent to me.</li>
+            <li>Click the name of your two blogs -- In case there are more than two, I need to know which two you want to compare</li>
+            <li>Click "Overlapr it"</li>
+            <ul>
+                <li>If you get a list of all your followers for the two blogs, and then one for the shared followers, fantastic! This will be prettier next week, but it works.</li>
+                <li>If something else happens, right click the site and select inspect element.  A window will pop up and one of the tabs on it will be labeled "Console".  There will be a bunch of text in it that looks something like this:
+                    <blockquote>
+                        <code>
+                            Failed to load resource: the server responded with a status of 404 (Not Found) <br>
+                            overlapr.js:20 Object<br>
+                            overlapr.js:111 info, i Object 1<br>
+                            overlapr.js:111 info, i Object 2<br>
+                            tumblr.js:80 This is o Object And this is r Object<br>
+                            overlapr.js:124 Followers request: r.data Array[1] index 1 offset 0<br>
+                            tumblr.js:80 This is o Object And this is r Object<br>
+                            overlapr.js:124 Followers request: r.data Array[1] index 2 offset 0<br>
+                            overlapr.js:96 These are the list(s) of followers Array[1] Array[0]<br>
+                            overlapr.js:96 These are the list(s) of followers Array[1] Array[1]<br>
+                            overlapr.js:137 followers Object<br>
+                            overlapr.js:100 result overlap Array[1]<br>
+                            http://noahlipsyc.com/personal/overlapr/css/base.css Failed to load resource: the server responded with a status of 404 (Not Found)<br>
+                        </code>
+                    </blockquote>
+                    Select it all with your mouse, copy it, and then send it to me in an <a href="mailto:n.lipsyc@gmail.com?Subject=BugReportFromIzzy">email</a>. 
+                </li>
+            </ul>
+        </ol>
+        <p>Thanks!</p>
 
-        <button id="blogs" onclick="getPosts('nmlapp.tumblr.com');">Blogs</button>
+        <div id="overlapr">
+            <button id="demoLogin" onclick="getDemoFollowers()">Explode your computer</button>
+            <button id="login" onclick="login('tumblr');">Tumblr</button>
 
-        <button id="doTheThing" onclick="doTheThing('tumblr');">Do The Thing</button>
+            <button id="blogs" onclick="getPosts('nmlapp.tumblr.com');">Bring down a swarm of locust</button>
 
-        <div id="blogs"></div>
+            <button id="doTheThing" onclick="doTheThing('tumblr');">Overlapr it</button>
 
-        <div id="blogButtons"></div>
+            <div id="blogs"></div>
 
-        <div id="resultA"></div>
-        <div id="resultB"></div>
-        <div id="resultOverlap"></div>
+            <div id="blogButtons"></div>
 
-          <!--<script type="text/babel" src="scripts/overlapr.js"></script>/-->
+            <div id="result1"></div>
+            <div id="result2"></div>
+            <div id="resultOverlap"></div>
+        </div>
+        <!--<script type="text/babel" src="scripts/overlapr.js"></script>/-->
     </div>
-  </body>
+</body>
 </html>
