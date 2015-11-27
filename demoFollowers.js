@@ -1,20 +1,22 @@
 function genDemoFollowers (){
 	var demoFollowersBlog = {a:[], b:[]};
 
-	for (var i=0; i<80; i++){
+	for (var i=0; i<90; i++){
 		var randID = Math.floor(Math.random()*1000);
 
 		//push 10 shared random followers to each blog
-		if (i%8 === 0){
+		if (i%9 === 0){
 			var shared = {following: true, name: "sharedBlogFollower" + randID, updated: 1447376836, url: "http://followerBlogA" + randID + ".tumblr.com/"};
 
 			demoFollowersBlog.a.push(shared);
 			demoFollowersBlog.b.push(shared);
 		}
 
-		//push 80 random followers with unique names to each blog
+		//push 90 random followers with unique names to blogA, 80 to blogB
 		demoFollowersBlog.a.push({following: true, name: "followerBlogA" + randID, updated: 1447376836, url: "http://followerBlogA" + randID + ".tumblr.com/"});
-		demoFollowersBlog.b.push({following: true, name: "followerBlogB" + randID, updated: 1447376836, url: "http://followerBlogB" + randID + ".tumblr.com/"});
+		if(i<80){
+			demoFollowersBlog.b.push({following: true, name: "followerBlogB" + randID, updated: 1447376836, url: "http://followerBlogB" + randID + ".tumblr.com/"});
+		}
 	}
 	return demoFollowersBlog;
 }

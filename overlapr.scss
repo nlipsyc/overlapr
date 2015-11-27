@@ -1,0 +1,68 @@
+@import "compass/css3/transition";
+
+//////////
+//
+// Colours
+//
+/////////
+
+$circle1 : red;
+$circle2 : blue;
+
+
+////
+#graphics{
+	height: 400px;
+	width: 400px;
+	top: 5%;
+	position: absolute;
+}
+
+
+@mixin circle{
+	border-radius: 50%;
+	height: 5%;
+	width: 5%;
+	position: absolute;
+}
+	#circle{
+		&1 {
+			@include circle;
+			background-color: $circle1;
+			left: 33%;
+			top: 50%;
+		}
+		&2 {
+			@include circle;
+			background-color: $circle2;
+			right: 33%;
+			top: 50%;
+		}
+	}
+
+	#circle1, #circle2{
+		&.circleTransition{
+	@include transition-duration(1s);
+	@include transition-timing-function(ease-in);
+	@include transition-property(all);
+	height: 30%;
+	width: 30%;
+	opacity: 0.8;
+	}
+}
+
+#results{
+	height: 25%;
+	width: 	100%;
+	overflow: hidden; 
+	position: absolute;
+	bottom: 0;
+}
+
+	#result1, #result2, #resultOverlap{
+		height: 100%;
+		width: 30%;
+		margin: 0, 2.5%;
+		float: left;
+		overflow-y: scroll;
+	}

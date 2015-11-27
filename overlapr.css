@@ -1,0 +1,65 @@
+/* line 14, overlapr.scss */
+#graphics {
+  height: 400px;
+  width: 400px;
+  top: 5%;
+  position: absolute;
+}
+
+/* line 29, overlapr.scss */
+#circle1 {
+  border-radius: 50%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  background-color: red;
+  left: 33%;
+  top: 50%;
+}
+/* line 35, overlapr.scss */
+#circle2 {
+  border-radius: 50%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  background-color: blue;
+  right: 33%;
+  top: 50%;
+}
+
+/* line 44, overlapr.scss */
+#circle1.circleTransition, #circle2.circleTransition {
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  height: 30%;
+  width: 30%;
+  opacity: 0.8;
+}
+
+/* line 54, overlapr.scss */
+#results {
+  height: 25%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 62, overlapr.scss */
+#result1, #result2, #resultOverlap {
+  height: 100%;
+  width: 30%;
+  margin: 0, 2.5%;
+  float: left;
+  overflow-y: scroll;
+}

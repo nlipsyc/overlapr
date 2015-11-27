@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>React Tutorial</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
-    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="overlapr.css" />
    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
@@ -24,7 +24,7 @@
 
 
     <div id="content">
-        <p>Hi Izzy,</p>
+       <!--  <p>Hi Izzy,</p>
         <p>So here's what I'd like you to do with a brief explanation of what each step does so that you don't need to worry.  Please open this page in Chrome and then...</p>
         <ol>
             <li>Click "Tumblr" and then "Allow"--This will send a request via a proxy at herokuapp.com to Tumblr (it's the standard way these things work to ensure that no one fucks around with the authentication).  This gives <em>your</em> computer a token that lets it grab info from Tumblr.  It never gets sent to me.</li>
@@ -55,9 +55,11 @@
             </ul>
         </ol>
         <p>Thanks!</p>
+    -->
+    <div id="overlapr">
 
-        <div id="overlapr">
-            <button id="demoLogin" onclick="getDemoFollowers()">Explode your computer</button>
+        <div id="buttons">
+            <button id="demoLogin" onclick="getDemoFollowers()">Demo followers</button>
             <button id="login" onclick="login('tumblr');">Tumblr</button>
 
             <button id="blogs" onclick="getPosts('nmlapp.tumblr.com');">Bring down a swarm of locust</button>
@@ -67,12 +69,21 @@
             <div id="blogs"></div>
 
             <div id="blogButtons"></div>
+        </div>
 
+        <div id="graphics">
+
+            <div id="circle1"></div>
+            <div id="circle2"></div>
+        </div>
+
+        <div id="results">
             <div id="result1"></div>
             <div id="result2"></div>
             <div id="resultOverlap"></div>
         </div>
-        <!--<script type="text/babel" src="scripts/overlapr.js"></script>/-->
     </div>
+    <!--<script type="text/babel" src="scripts/overlapr.js"></script>/-->
+</div>
 </body>
 </html>
